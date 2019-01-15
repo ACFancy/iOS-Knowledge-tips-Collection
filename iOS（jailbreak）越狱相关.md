@@ -80,3 +80,9 @@ Mac安装Frida
 7.打开对应的XCode,新建项目滑到最低不会出现，新建MonkeyDev的选项
 8.详细见： https://github.com/AloneMonkey/MonkeyDev/wiki
 ```
+### ipa重签名工具 ios-app-signer
+ ```
+ 1. https://dantheman827.github.io/ios-app-signer/
+ 2. 下载解压，将ipa拖入，然后使用你自己的开发者账号
+ 3. 然后点击start 等待重签名完成即可
+ ```
