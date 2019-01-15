@@ -79,6 +79,7 @@ Mac安装Frida
 6.执行安装完成后，会在目录 /opt 下多一个 MonkeyDev的目录
 7.打开对应的XCode,新建项目滑到最低不会出现，新建MonkeyDev的选项
 8.详细见： https://github.com/AloneMonkey/MonkeyDev/wiki
+9.MonkeyDev 默认集成是最新版本，需要把自己的 RevealServer.framework放到/opt/MonkeyDev/frameworks下（打开 Reveal，点击 reveal - help - show reveal in finder 即可找到 RevealServer.framework），这样就可以查看时图层级。
 ```
 ### ipa重签名工具 ios-app-signer
  ```
