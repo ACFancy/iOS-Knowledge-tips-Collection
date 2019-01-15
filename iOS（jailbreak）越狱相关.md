@@ -13,6 +13,10 @@
   6.1 这里的jailbreak应该会有坑，像出现 Error:Exploit错误，不断重启的问题。
   6.2 出现上面的问题，如果在airplane Mode 下重试n次都不行的话，建议卸载Electra，多次重新安装Electra(可以使用不同版本的vfs的ipa)
   6.3 恭祝坚持到最后的会成功越狱成功。
+7.iOS有两个常用账户: root, mobile
+  root账户: 最高权限账户, $HOME是 /var/root
+  mobile账户: 普通权限账户, $HOME是 /var/mobile, 只能操作一些普通文件, 不能操作系统级别的文件
+  登录mobile账户: ssh mobile@手机iP, 输入密码: alpine
 ```
 
 ### 安装Frida
