@@ -29,3 +29,52 @@ Mac安装Frida
 3. 安装成功后，打开Cydia软件（前提已安装Frida），USB连接到Mac
 4. 使用命令： frida-ps -U 验证是否安装成功
 ```
+
+### 安装Cycript
+```
+ 1.官网地址：http://www.cycript.org/ 下载 SDK
+ 2. 将SDK 加压到 /opt 目录下
+```
+
+### Mac上调用cycript出错：dyld: Library not loaded
+```
+在Mac使用cycript在非越狱手机上调试时，调用：./cycript报错：
+1.错误原因：是因为电脑的ruby版本不匹配
+2.cd /System/Library/Frameworks/Ruby.framework/Versions/ 查看当前ruby版本
+3.关闭系统的SIP
+3.1 电脑重启按住command+R，进入恢复模式
+3.2 打开终端，输入csrutil disable，重启
+3.3 如果想打开SIP，重复上两步，命令改为csrutil enable
+4.直接把2.3的复制一份，改为2.0即可，运行如下命令：
+  $ sudo mkdir -p /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/
+  $ sudo ln -s /System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/lib/libruby.2.3.0.dylib  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/libruby.2.0.0.dylib
+5.现在调用./cycript能正常进入cy模式了：
+```
+
+### 安装theos
+```
+1. sudo git clone --recursive https://github.com/theos/theos.git /opt/theos
+2. export THEOS=/opt/theos 在文件 ~/.profile 中添加
+3. 可以用这个命令行工具 source ~/.zshrc（可选）
+4. https://github.com/theos/sdks 下载 theos sdk拷贝到 /opt/theos/sdks 目录下
+5. brew install ldid xz
+6. curl https://ghostbin.com/ghost.sh -o 找一个可以写入的文件（自定义为ghost）
+7. 拷贝上面的文件 到 opt/theos/bin 目录下
+8. hmod +x opt/theos/bin/ghost
+```
+
+### 安装MonKeyDev
+```
+1.brew install ldid
+2.通过以下命令选择指定的Xcode进行安装
+2.1 sudo xcode-select -s /Applications/Xcode.app
+2.2 xcode-select -p
+3.执行安装命令
+3.1 sudo /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/AloneMonkey/MonkeyDev/master/bin/md-install)"
+4.执行卸载
+4.1 sudo /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/AloneMonkey/MonkeyDev/master/bin/md-uninstall)"
+5.更新
+5.1 sudo /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/AloneMonkey/MonkeyDev/master/bin/md-update)"
+6.执行安装完成后，会在目录 /opt 下多一个 MonkeyDev的目录
+7.打开对应的XCode,新建项目滑到最低不会出现，新建MonkeyDev的选项
+```
