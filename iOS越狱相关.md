@@ -60,7 +60,8 @@ Mac安装Frida
 5. brew install ldid xz
 6. curl https://ghostbin.com/ghost.sh -o 找一个可以写入的文件（自定义为ghost）
 7. 拷贝上面的文件 到 opt/theos/bin 目录下
-8. hmod +x opt/theos/bin/ghost
+8. chmod +x opt/theos/bin/ghost
+9. 详细见： https://github.com/theos/theos/wiki/Installation-macOS 和 https://github.com/AloneMonkey/MonkeyDev/issues/18
 ```
 
 ### 安装MonKeyDev
@@ -77,4 +78,5 @@ Mac安装Frida
 5.1 sudo /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/AloneMonkey/MonkeyDev/master/bin/md-update)"
 6.执行安装完成后，会在目录 /opt 下多一个 MonkeyDev的目录
 7.打开对应的XCode,新建项目滑到最低不会出现，新建MonkeyDev的选项
+8.详细见： https://github.com/AloneMonkey/MonkeyDev/wiki
 ```
