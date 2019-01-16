@@ -39,8 +39,49 @@ Mac安装Frida
 
 ### 安装Cycript
 ```
+ MacOS安装：
  1.官网地址：http://www.cycript.org/ 下载 SDK
  2. 将SDK 加压到 /opt 目录下
+ 手机安装：(或报错：Cycript can't @import)
+ 1.在var/root/目录下
+ 2.先下载下面的deb包，copy放到var/root目录下
+ 2.1 https://electrarepo64.coolstar.org/debs/ncurses_6.1_iphoneos-arm.deb
+ 2.2 http://apt.saurik.com/debs/readline_6.0-8_iphoneos-arm.deb
+ 2.3 http://apt.saurik.com/debs/cycript_0.9.594_iphoneos-arm.deb
+ 2.4 http://www.tateu.net/repo/files/net.tateu.cyrun_1.0.1_iphoneos-arm.deb
+ 2.5 http://www.tateu.net/repo/files/net.tateu.cyrun_1.0.1_iphoneos-arm.deb
+ 3.解压安装
+ 3.1 dpkg -i ncurses_6.1_iphoneos-arm.deb
+ 3.2 dpkg -i readline_6.0-8_iphoneos-arm.deb
+ 3.3 dpkg -i cycript_0.9.594_iphoneos-arm.deb
+ 3.4 dpkg -i net.tateu.cycriptlistenertweak_1.0.0_iphoneos-arm.deb
+ 3.5 dpkg -i net.tateu.cyrun_1.0.1_iphoneos-arm.deb
+ 3.6 注意：3.4 3.5 可能会报错。可以忽略
+ 4.执行以下命令
+ 4.1  can use the bash script to sign the Cycript binaries with the correct Electra entitlements
+ 4.1.1 cyrun -s
+ 4.2 Then you can load Cycript into SpringBoard. SpringBoard will be terminated and auto restart
+ 4.2.1 cyrun -n <YOUR APP NAME> -e
+ 4.3 Or you can unload Cycript from SpringBoard. SpringBoard will be terminated and auto restart
+ 4.3.1 cyrun -n <YOUR APP NAME> -d
+ 4.4 Or you can load and auto unloaded Cycript from the iOS Mail App. Mail will be terminated and auto restart. When you ?exit Cycript, it will be killed and unloaded.
+ 4.4.1 cyrun -n <YOUR APP NAME> -e -d
+ 4.5 Or you can load and auto unloaded Cycript from backboardd. backboardd will be terminated and auto restart. When you ?exit Cycript, it will be killed and unloaded.
+ 4.5.1 cyrun -x <YOUR APP NAME> -e -d
+ 4.6 The '-n' command takes an AppName, ExecutableName, IconName or LocalizedName.You can use a bundleIdentifier instead of an App name with
+ 4.6.1 '-b com.apple.springboard'
+ 4.7 ou can also turn off the 'ask to continue' prompts with '-f'
+ 4.7.1 cyrun -b com.apple.mobilemail -e -d -f
+ 4.8 Add the source code for my deb files
+ 4.8.1 http://www.tateu.net/repo/files/cycriptListenerTweak_01_v1.0.0.zip
+ 4.8.2 http://www.tateu.net/repo/files/cyrun_01b_v1.0.1.zip
+ New Version:
+ 1.It no longer needs AppList so now the '-n' command works better. It should work with an AppName, ExecutableName, IconName or LocalizedName
+ 2.Added a '-x' option so it can be injected into executables that are not Apps, such as backboardd. It will not auto relaunch executables, though. They will have to do that on their own, such as is the case with backboardd, or you will have to relaunch them manually.
+ 2.1 cyrun -x backboardd -e -d
+ 3.It now warns you if you try to enable Cycript for an App that is not SpringBoard while your device is passcode locked, since it will most likely fail for most Apps.
+ 4.1 http://www.tateu.net/repo/files/cyrun_01b_v1.0.1.zip
+ 4.2 http://www.tateu.net/repo/files/net.tateu.cyrun_1.0.1_iphoneos-arm.deb
 ```
 
 ### Mac上调用cycript出错：dyld: Library not loaded
