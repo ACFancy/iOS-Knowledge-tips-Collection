@@ -1,2 +1,2 @@
-# iOS-StackOverflow-Collection
-iOS-StackOverflow知识点收集
+# iOS-Tips-Collection
+iOS-知识点收集
