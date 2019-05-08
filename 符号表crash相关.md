@@ -29,3 +29,4 @@ cd {YourComputerPath}/{YourCreatedFloder}
 ```
 ## Crash文章链接
 1. [漫谈iOS Crash收集框架](https://nianxi.net/ios/ios-crash-reporter.html)
+2. [iOS Crash日志堆栈解析](https://juejin.im/post/5adf15f2518825671775f3e1)
