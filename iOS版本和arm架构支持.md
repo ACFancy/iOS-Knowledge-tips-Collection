@@ -6,7 +6,8 @@
  post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      config.build_settings['VALID_ARCHS'] = 'arm64'
+      config.build_settings['ARCHS'] = '$(ARCHS_STANDARD_64_BIT)'
+      config.build_settings['VALID_ARCHS'] = ['arm64', 'arm64e']
     end
   end
 end
