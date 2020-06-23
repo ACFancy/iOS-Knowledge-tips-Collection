@@ -3,6 +3,11 @@
 ```
 IPSW.ME: https://ipsw.me/
 ```
+### 越狱安装软件网址
+```
+https://unc0ver.dev/
+```
+
 ### iOS 11.3 越狱步骤
 ```
 1. 搜索Electra官网，下载最新版本，使用vfs版本。（我使用的是1.1.0版本的vfs）
