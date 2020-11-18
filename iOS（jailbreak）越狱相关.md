@@ -8,6 +8,11 @@ IPSW.ME: https://ipsw.me/
 https://unc0ver.dev/
 ```
 
+### 越狱的安装源地址
+```
+https://github.com/zbrateam/Zebra
+```
+
 ### iOS 11.3 越狱步骤
 ```
 1. 搜索Electra官网，下载最新版本，使用vfs版本。（我使用的是1.1.0版本的vfs）
