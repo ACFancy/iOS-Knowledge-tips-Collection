@@ -1,22 +1,22 @@
 ### Mac Big sur Gem Ignoring because its extensions are not built problems
-#### try
+- try
  ```ruby
   gem pristine --all
   ```
-#### tip: permission issues
-  -check
+- tip: permission issues
+- check ruby
   ```ruby
   which ruby
   ```
-  - then
+- then
   ```ruby
   brew link --overwrite ruby && source ~/.bash_profile
   ```
-  - or (OnMy ZSH commond tool)
+- or (OnMy ZSH commond tool)
    ```ruby
   brew link --overwrite ruby && source ~/.zshrc
   ```
-  - then
+- then
   ```ruby
   gem pristine --all
   ```
