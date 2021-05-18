@@ -17,7 +17,7 @@
   - 需要在项目下有一个白名单(参考项目Demo的BinArchive.json)
   - 需要把本项目添加到白名单中(比如Demo)
   - 使用这个命名进行制作和上传二进制(首先按照教程配置好mongoDB和binaryServer并启动
-    -```shell
-     pod bin init 配置一些自定义的操作
-     pod bin auto --all-make
-     ```
+    ```shell
+      pod bin init 配置一些自定义的操作
+      pod bin auto --all-make
+    ```
