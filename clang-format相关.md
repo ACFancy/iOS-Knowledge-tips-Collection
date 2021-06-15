@@ -71,6 +71,7 @@
     ninja clang-format
     strip bin/clang-format
     ```
+   - linux 需要这个source [chromium](https://chromium.googlesource.com/chromium/src/)
 - 参考链接
   - [Google](https://chromium.googlesource.com/chromium/src/+/HEAD/docs/updating_clang_format_binaries.md)
   - [llvm-HomePage-GetStart](https://clang.llvm.org/get_started.html)
