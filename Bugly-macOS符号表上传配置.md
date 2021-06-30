@@ -42,5 +42,15 @@
                                     -version "<Your bugly custom app version>" \
                                     -platform "IOS" \
                                     -inputSymbol "<Your dSym files dir path>"
-     # 如果碰到
     ```
+  - 可能碰到的问题
+    -  jar文件不能打开
+    -  jar文件不能访问
+  - 解决方案
+    - 检查对应的jdk版本是不是正确的
+    - 需要放到别的目录下去执行，当前目录没有权限执行
+  - 执行成功后会有下面文件自动生成
+    - buglybin文件夹
+    - buglyqq-upload-symbol.jar(一开始解压上传符号表工具就有)
+    - cp_buglyQqUploadSymbolLib.jar
+    - cp_buglySymboliOS.jar
