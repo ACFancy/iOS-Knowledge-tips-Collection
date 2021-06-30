@@ -54,3 +54,6 @@
   - buglyqq-upload-symbol.jar(一开始解压上传符号表工具就有)
   - cp_buglyQqUploadSymbolLib.jar
   - cp_buglySymboliOS.jar
+- 参考
+  - [bugly issue#72](https://github.com/BuglyDevTeam/Bugly-iOS/issues/72)
+  - [macOs java jdk多环境配置](https://segmentfault.com/a/1190000020083040)
