@@ -27,6 +27,8 @@ cd {YourComputerPath}/{YourCreatedFloder}
    dwarfdump --lookup 0x00159fc1  -arch arm7 xxx.dSYM
    atos -arch arm64 -o xxx.dSYM/Contents/Resources/DWARF/xxx -l 0x1000e4000 0x00000001000effdc
 ```
+## dSym解析工具Repo
+- [dSYM解析工具](https://github.com/answer-huang/dSYMTools.git)
 ## Crash文章链接
 1. [漫谈iOS Crash收集框架](https://nianxi.net/ios/ios-crash-reporter.html)
 2. [iOS Crash日志堆栈解析](https://juejin.im/post/5adf15f2518825671775f3e1)
