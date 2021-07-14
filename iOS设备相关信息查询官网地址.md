@@ -1,1 +1,2 @@
-[#1.Device Compatibility](https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html)
+- [#1.Device Compatibility](https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html)
+- [#.设备配置内存等信息列表](https://www.theiphonewiki.com/wiki/List_of_iPhones)
