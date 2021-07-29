@@ -25,8 +25,13 @@ cd {YourComputerPath}/{YourCreatedFloder}
 6. dwarfdump 或者 atos 指令进行堆栈地址查询和查询对应地址执行的code的字符串，比如：
 ```
    dwarfdump --lookup 0x00159fc1  -arch arm7 xxx.dSYM
-   atos -arch arm64 -o xxx.dSYM/Contents/Resources/DWARF/xxx -l 0x1000e4000 0x00000001000effdc
+   atos -arch arm64 -o xxx.dSYM/Contents/Resources/DWARF/xxx -l baseAddress(0x1000e4000) targetAddress(0x00000001000effdc)
 ```
+7.获取dSYM的uuid信息
+```sh
+ dwarfdump --uuid xx.app/xxx.app.dSYM/Contents/Resources/DWARF/xxx
+```
+8
 ## dSym解析工具Repo
 - [dSYM解析工具](https://github.com/answer-huang/dSYMTools.git)
 ## Crash文章链接
