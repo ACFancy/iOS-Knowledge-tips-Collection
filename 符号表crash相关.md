@@ -27,11 +27,10 @@ cd {YourComputerPath}/{YourCreatedFloder}
    dwarfdump --lookup 0x00159fc1  -arch arm7 xxx.dSYM
    atos -arch arm64 -o xxx.dSYM/Contents/Resources/DWARF/xxx -l baseAddress(0x1000e4000) targetAddress(0x00000001000effdc)
 ```
-7.获取dSYM的uuid信息
+7. 获取dSYM的uuid信息
 ```sh
  dwarfdump --uuid xx.app/xxx.app.dSYM/Contents/Resources/DWARF/xxx
 ```
-8
 ## dSym解析工具Repo
 - [dSYM解析工具](https://github.com/answer-huang/dSYMTools.git)
 ## Crash文章链接
