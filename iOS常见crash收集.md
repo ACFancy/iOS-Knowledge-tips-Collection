@@ -94,4 +94,46 @@
  - [中文文档地址](https://faisalmemon.github.io/ios-crash-dump-analysis-book/zh)
  - [英文文档地址](https://faisalmemon.github.io/ios-crash-dump-analysis-book/en)
  - [git Repo地址](https://github.com/faisalmemon/ios-crash-dump-analysis-book)
+### 锁屏绘制导致的crash
+ - [苹果文档](**https://developer.apple.com/library/archive/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/CommonPitfalls/CommonPitfalls.html)
+ - ```c
+   setsockopt(sock, SOL_SOCKET, SO_NOSIGPIPE, &value, sizeof(value));
+   ```
+### 常见异常类型
+- Bad Memory Access [EXC_BAD_ACCESS // SIGSEGV // SIGBUS]
+  - 进程试图访问无效的内存空间，或尝试访问的方法不允许(例如去写只读的内存空间)
+- Abnormal Exit [EXC_CRASH // SIGABRT]
+  - 进程异常退出，常见原因是uncaught Objective-C/C++ exception 并且调用了abort()
+- Trace Trap [EXC_BREAKPOINT // SIGTRAP]
+  - 和Abnormal Exit类似，这种异常是由于在特殊的节点加入debugger调试节点的原因。
+- Illegal Instruction [EXC_BAD_INSTRUCTION // SIGILL]
+  - 尝试执行一个非法或者未定义的指令时会触发该异常
+- Quit [SIGQUIT]
+  - 这个异常是由于其他进程拥有高优先级且可以管理本进程所导致（被高优先级进程kill掉）。
+- Killed[SIGKILL]
+  - 进程收到系统指令被干掉，可以自行查看Termination Reason来定位线程被干掉的原因。
+- Guarded Resource Violation [EXC_GUARD]
+  - 进程访问了一个被保护的资源。
+- Resource Limit [EXC_RESOURCE]
+  - 进程的资源超过限定阈值，表示进程占用太多资源，Exception Subtype会提示原因，例如
+    - MEMORY:暗示了进程占用已经超过系统限制。如果之后出现由于系统占用过多进程被Kill，可能和这有关
+    - WAKEUP:暗示线程每秒被进程唤醒太多次了，进而导致CPU被频繁唤醒并且造成电量损耗。 通常，这种事发生在线程间通信（通过peformSelector:onThread:或者dispatch_async），而且会远比预想的发生的更频繁。因为发生这种异常的通信被触发的如此频繁，所以很多后台线程会出现彼此高度雷同的堆栈信息——恰恰暗示了它们是从哪儿来的。
+- Other Exception Types
+  - 有些report可能出现无名的Exception Type，取而代之出现的是16进制的地址(0x12387617823)，下面列举一些
+    - 0xbaaaaaad: 则说明此条logs是系统堆栈快照，并非crash report。可以通过同时按（手机）侧边按钮和音量键来记录堆栈快照。通常情况下，这些logs是用户无意中生成的，并非表示错误
+    - 0xbad22222: 表示一个VoIP应用因为频繁暂停被iOS系统终止掉。
+    - 0x8badf00d:（读起来像badfood）则说明一个应用因为触发了看门狗机制被iOS系统终止掉，有可能是应用花了太长时间启动，终止，或者是响应系统事件。一种常见原因是在主线程上做网络同步逻辑。不论Thread0上（也就是主线程）想做什么（重要的事），都应该转移到后台线程，或者换一种方式触发，这样它才不会阻塞主线程。
+    - 0xc00010ff: 则说明app因为环境过热（的事件）被iOS系统干掉了。这个也许是和发生crash的特定设备有关，或者是和它所在的环境有关。
+    - 0xdead10cc: (读起来像deadlock)则说明一个应用被系统终止掉，原因是在应用挂起时拿到了文件锁或者sqlite数据库所长期不释放直到被冻结。如果你的app在挂起时拿到了文件锁或者sqlite数据库锁，它必须请求额外的后台执行时间(request additional background execution time )并在被挂起前完成解锁操作。
+    - 0x2bad45ec: 则说明app因为违规操作（安全违规）被iOS系统终止。终止描述会写：“进程被查到在安全模式进行非安全操作”，暗示app尝试在禁止屏幕绘制的时候绘制屏幕，例如当屏幕锁定时。用户可能会忽略这种异常，尤其当屏幕是关闭的或者当这种终止发生时正好锁屏
+- 低内存Low Memory Reports
+  - 当系统检测到内存不足时，虚拟内存系统会协同各应用来做内存释放，各个应用都会接受到内存警告，要求释放内存空间。如果内存依然不够，则你的应用会被终止，并生成report 存储在设备中，没有堆栈信息，可能的原因有一下几个：
+    - [per-process-limit]:进程占用超过了它的最大内存值。每一个进程在常驻内存上的限制是早已经由系统为每个应用分配好了的。超过这个限制会导致进程被系统干掉。
+    - [vm-pageshortage]/[vm-thrashing]/[vm]:由于系统内存压力被干掉。
+    - [vnode-limit]: 打开太多文件了。
+    - [highwater]:一个系统守护进程超过过了它的内存占用高水位（就是已经很危险了）。
+    - [jettisoned]:进程因为其它不可描述的原因被杀掉。
+
+### 参考
+- [博客](https://byronjia.github.io/2020/12/iOS-Crash-%E5%88%86%E6%9E%90/)
  
