@@ -25,3 +25,4 @@
    | DYLD_IMAGE_SUFFIX   | 1 | Search for libraries with this suffix first|
 - 参考
   - [博客](https://www.cnblogs.com/lxlx1798/p/9283956.html)
+  - [苹果文档](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/LoggingDynamicLoaderEvents.html)
