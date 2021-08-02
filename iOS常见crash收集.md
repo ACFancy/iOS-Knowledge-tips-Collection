@@ -90,4 +90,8 @@
        libdyld.dylib                 	0x000000018461dfc0 0x18461d000 + 4032
        ```
       - 这个 stack 很经典，经常会看到，不需要 symbolicate 也能知道是干啥，这是 UI 线程 runloop 处于 idle 状态的 stack，在等待 kernel 的 message。表示 UI 线程此时处于闲置状态，这种状态下的系统强杀大概率是由于 leaked Background Task 导致的
+### crash dump 技术书籍文档
+ - [中文文档地址](https://faisalmemon.github.io/ios-crash-dump-analysis-book/zh)
+ - [英文文档地址](https://faisalmemon.github.io/ios-crash-dump-analysis-book/en)
+ - [git Repo地址](https://github.com/faisalmemon/ios-crash-dump-analysis-book)
  
