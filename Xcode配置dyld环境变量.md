@@ -23,5 +23,5 @@
    | DYLD_PRINT_LIBRARIES_POST_LAUNCH   | 1 | Log library loads , but only after main has run|
    | DYLD_PRINT_LIBRARIES   | 1 | Log library loads|
    | DYLD_IMAGE_SUFFIX   | 1 | Search for libraries with this suffix first|
- - 参考
+- 参考
   - [博客](https://www.cnblogs.com/lxlx1798/p/9283956.html)
