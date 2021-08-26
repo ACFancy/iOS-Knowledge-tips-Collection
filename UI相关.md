@@ -3,6 +3,19 @@
     [控件 setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     [控件 setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
 ```
+## UITableView tableHeaderView的 autolayout
+```swift
+extension UITableView {
+    //set the tableHeaderView so that the required height can be determined, update the header's frame and set it again
+    func setAndLayoutTableHeaderView(header: UIView) {
+        self.tableHeaderView = header
+        header.setNeedsLayout()
+        header.layoutIfNeeded()
+        header.frame.size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        self.tableHeaderView = header
+    }
+}
+```
 ## setNeedsLayout、layoutIfNeeded、layoutSubViews
 - layoutSubviews总结
 ```objc
