@@ -4,6 +4,7 @@
 #### 环境搭建的坑
  - MongoDB 数据保存的路径创建的问题
    ```shell
+   export PATH=/usr/local/mongodb/bin:$PATH
    mkdir ~/data 
    cd ~/data
    pwd
