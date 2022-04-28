@@ -20,6 +20,11 @@
 ### api的使用key value store
  - 系统API类 NSUbiquitousKeyValueStore
  - [NSUbiquitousKeyValueStore](https://developer.apple.com/documentation/foundation/nsubiquitouskeyvaluestore)
+ - [blog使用介绍](https://betterprogramming.pub/data-persistence-nsubiquitouskeyvaluestore-9cf4f97cd50c)
+    - The combined key-value storage is 1 MB.
+    - A single key-value pair cannot exceed 1 MB in size.
+    - You can’t save more than 1024 key-value pairs.
+    - A single key can’t be larger than 64 bytes using UTF-8 encoding.
   ```swift
           import UIKit
 
