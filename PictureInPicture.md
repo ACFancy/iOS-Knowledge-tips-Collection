@@ -43,6 +43,12 @@ class PicktureInPicktureManager: NSObject {
             stopPlay()
             return
         }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .moviePlayback, options: .mixWithOthers)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            debugPrint("\(error.localizedDescription)")
+        }
         self.pipVC = pinpVC
         if #available(iOS 14.2, *) {
             pinpVC.canStartPictureInPictureAutomaticallyFromInline = true
