@@ -107,12 +107,14 @@ extension PicktureInPicktureManager: AVPictureInPictureControllerDelegate {
     func pictureInPictureController(_ pictureInPictureController: AVPictureInPictureController, failedToStartPictureInPictureWithError error: Error) {
         stopPip()
         playerLayer.isHidden = true
+        playerLayer.removeFromSuperlayer()
         stopPlay()
         removeObserve()
     }
 
     func pictureInPictureControllerDidStopPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
         playerLayer.isHidden = true
+        playerLayer.removeFromSuperlayer()
         pipVC = nil
         stopPlay()
         removeObserve()
