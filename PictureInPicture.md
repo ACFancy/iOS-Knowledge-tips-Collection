@@ -23,6 +23,7 @@ class PicktureInPicktureManager: NSObject {
         player.actionAtItemEnd = .none
         return player
     }()
+    private var timeObserverToken: Any?
 
     static let shared: PicktureInPicktureManager = .init()
 
@@ -57,9 +58,6 @@ class PicktureInPicktureManager: NSObject {
         self.autoHomeScreen = autoHomeScreen
         addObserve()
         player.play()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
-            self?.startPip()
-        }
     }
 
     func stopPip() {
@@ -90,12 +88,35 @@ class PicktureInPicktureManager: NSObject {
     }
 
     private func addObserve() {
+        addTimeObserver()
         guard let currentItem = player.currentItem else { return }
         NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidEnd(_:)), name: .AVPlayerItemDidPlayToEndTime, object: currentItem)
     }
 
     private func removeObserve() {
+        // swiftlint:disable:next notification_center_detachment
         NotificationCenter.default.removeObserver(self)
+        removeTimeObserver()
+    }
+
+    private func addTimeObserver() {
+        removeTimeObserver()
+        let interval = CMTime(seconds: 0.01,
+                              preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+        var isTriggered: Bool = false
+        timeObserverToken = player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] _ in
+            guard let self = self else { return }
+            guard !isTriggered else { return }
+            isTriggered = true
+            self.startPip()
+            self.removeTimeObserver()
+        }
+    }
+
+    private func removeTimeObserver() {
+        guard let timeObserverToken = timeObserverToken else { return }
+        self.timeObserverToken = nil
+        player.removeTimeObserver(timeObserverToken)
     }
 
     @objc private func playerItemDidEnd(_ notify: Notification) {
@@ -137,5 +158,6 @@ extension UIApplication {
         }
     }
 }
+
 
 ```
