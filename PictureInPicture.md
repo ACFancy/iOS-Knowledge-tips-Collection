@@ -1,4 +1,4 @@
-### picktureInPickture 实践
+### pictureInPicture 实践
 - ![image](https://user-images.githubusercontent.com/10044815/237030358-05b01a12-0371-492b-b54a-cf691da2cc05.png)
 - https://developer.apple.com/documentation/avkit/adopting_picture_in_picture_in_a_custom_player
 
