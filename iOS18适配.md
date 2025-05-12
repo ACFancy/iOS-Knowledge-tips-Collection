@@ -2,7 +2,7 @@
 #### UITabBarController 适配
 > 主要是iPad OS的适配，保持原来的UITabBar的样式，不使用iOS 18新增的UISiderBar
 - 解决方案(自定义UITabBarController类，override下面的属性)
- - 1. 不推荐的方案，编译器会警告
+ - 1. 不推荐的方案，编译器会警告(并且侧滑返回手势会失效，UI显示是正常)
   ```swift
   override var traitCollection: UITraitCollection {
       let value = super.traitCollection
