@@ -41,3 +41,15 @@
         // other code
       }
    ```
+   - 4. 对于NavigationController
+   ```swift
+   class NavigationController: CustomNavigationController {
+    // MARK: - Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if Device.current.isPad, #available(iOS 18.0, *) {
+            traitOverrides.horizontalSizeClass = .unspecified
+        }
+    }
+   }
+   ```
